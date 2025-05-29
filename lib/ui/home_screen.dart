@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
 import 'package:SideBarExampleApp/ui/style/colors.dart';
+import 'package:SideBarExampleApp/ui/style/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Meu App",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: GoogleFonts.roboto().fontFamily),
-      home: const Tela(),
-    );
+    return const Tela();
   }
 }
 
@@ -23,37 +22,46 @@ class Tela extends StatefulWidget {
 }
 
 class _TelaState extends State<Tela> {
-  bool isDarkMode = false;
-
-  void toggleTheme() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Entra21"),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.85),
+          elevation: 2, // uma sombra suave para destacar
+        title: Text(
+          "SideBar",
+          style: GoogleFonts.roboto(),
+        ),
         actions: [
           IconButton(
-            icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
-            onPressed: toggleTheme, // Chama a função corretamente
+            icon: Icon(
+              themeProvider.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+            ),
+            onPressed: themeProvider.toggleTheme,
           ),
         ],
       ),
-      body: const Text("Sim está é a tela principal do app"),
-      backgroundColor: AppColor.BgColorPrimary,
+      body: DefaultTextStyle(
+        style: GoogleFonts.roboto(
+          color: Theme.of(context).textTheme.bodyMedium?.color,
+          fontSize: 14,
+        ),
+        child: const Text("Sim está é a tela principal do app"),
+      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: AppColor.BgColorSecondary),
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: AppColor.BgColorSecondary,
+              ),
               child: Text(
                 "Menu",
-                style: TextStyle(
+                style: GoogleFonts.roboto(
                   color: AppColor.TextTitule,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -62,42 +70,42 @@ class _TelaState extends State<Tela> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text("Home"),
+              title: Text("Home", style: GoogleFonts.roboto()),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.shopping_cart),
-              title: const Text("Login"),
+              title: Text("Login", style: GoogleFonts.roboto()),
               onTap: () {
                 Navigator.pushNamed(context, "login");
               },
             ),
             ListTile(
               leading: const Icon(Icons.build),
-              title: const Text("Suporte"),
+              title: Text("Suporte", style: GoogleFonts.roboto()),
               onTap: () {
                 Navigator.pushNamed(context, "Suporte");
               },
             ),
             ListTile(
               leading: const Icon(Icons.contact_mail),
-              title: const Text("Newsletter"),
+              title: Text("Newsletter", style: GoogleFonts.roboto()),
               onTap: () {
                 Navigator.pushNamed(context, "Newsletter");
               },
             ),
             ListTile(
               leading: const Icon(Icons.work),
-              title: const Text("Portifolio"),
+              title: Text("Portifolio", style: GoogleFonts.roboto()),
               onTap: () {
                 Navigator.pushNamed(context, "Portifolio");
               },
             ),
             ListTile(
               leading: const Icon(Icons.info),
-              title: const Text("Sobre"),
+              title: Text("Sobre", style: GoogleFonts.roboto()),
               onTap: () {
                 Navigator.pushNamed(context, "Sobre");
               },

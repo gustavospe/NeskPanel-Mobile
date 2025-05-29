@@ -1,16 +1,18 @@
-# exersidebat
+# SideBar Example App
 
-A new Flutter project.
+Este é um projeto de exemplo desenvolvido em Flutter com o objetivo de demonstrar a implementação de uma **sidebar** funcional em um aplicativo. A aplicação apresenta uma interface simples e intuitiva, com navegação entre diferentes telas utilizando uma barra lateral.
 
-## Getting Started
+## Objetivo do Projeto
 
-This project is a starting point for a Flutter application.
+O objetivo principal deste projeto é fornecer um exemplo prático de como implementar uma **sidebar** em um aplicativo Flutter. A sidebar permite a navegação entre diferentes telas, como "Home", "Login", "Suporte", "Newsletter", "Portifolio" e "Sobre".
 
-A few resources to get you started if this is your first Flutter project:
+## Funcionalidades
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Tema Claro/Escuro**: O aplicativo permite alternar entre os modos claro e escuro.
+- **Navegação por Sidebar**: A barra lateral contém itens de menu que redirecionam para diferentes telas.
+- **Design Responsivo**: Utiliza o pacote `google_fonts` para personalizar a fonte e melhorar a aparência.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Estrutura do Projeto
+
+A estrutura principal do projeto é organizada da seguinte forma:
+

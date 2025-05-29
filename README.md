@@ -8,11 +8,11 @@ O objetivo principal deste projeto é fornecer um exemplo prático de como imple
 
 ## Funcionalidades
 
-- **Tema Claro/Escuro**: O aplicativo permite alternar entre os modos claro e escuro.
+- **Tema Claro/Escuro**: O aplicativo permite alternar entre os modos claro e escuro utilizando o botão no AppBar.
 - **Navegação por Sidebar**: A barra lateral contém itens de menu que redirecionam para diferentes telas.
-- **Design Responsivo**: Utiliza o pacote `google_fonts` para personalizar a fonte e melhorar a aparência.
+- **Design Personalizado**: Utiliza o pacote `google_fonts` para personalizar a fonte e melhorar a aparência.
+- **Gerenciamento de Estado**: Implementado com o pacote `provider` para alternância de tema.
 
 ## Estrutura do Projeto
 
 A estrutura principal do projeto é organizada da seguinte forma:
-

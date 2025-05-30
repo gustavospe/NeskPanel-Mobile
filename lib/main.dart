@@ -1,15 +1,15 @@
 // Imports das telas do aplicativo em seus respectivos diretórios.
-import 'package:SideBarExampleApp/ui/login_screen.dart';
-import 'package:SideBarExampleApp/ui/home_screen.dart';
-import 'package:SideBarExampleApp/ui/suporte_screen.dart';
-import 'package:SideBarExampleApp/ui/newsletter_screen.dart';
-import 'package:SideBarExampleApp/ui/portifolio_screen.dart';
-import 'package:SideBarExampleApp/ui/sobre_screen.dart';
+import 'package:SideBarExampleApp/presentation/pages/login_screen.dart';
+import 'package:SideBarExampleApp/presentation/pages/home_screen.dart';
+import 'package:SideBarExampleApp/presentation/pages/suporte_screen.dart';
+import 'package:SideBarExampleApp/presentation/pages/newsletter_screen.dart';
+import 'package:SideBarExampleApp/presentation/pages/portifolio_screen.dart';
+import 'package:SideBarExampleApp/presentation/pages/sobre_screen.dart';
 // ------------------------------------------------------------
 
 import 'package:flutter/material.dart'; // import do MaterialApp
 import 'package:provider/provider.dart'; // import do Provider
-import 'package:SideBarExampleApp/ui/style/theme_provider.dart'; // import do ThemeProvider
+import 'package:SideBarExampleApp/presentation/theme/theme_provider.dart'; // import do ThemeProvider
 
 void main() {
   runApp(

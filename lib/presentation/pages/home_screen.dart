@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'package:SideBarExampleApp/ui/style/colors.dart';
-import 'package:SideBarExampleApp/ui/style/theme_provider.dart';
+import 'package:SideBarExampleApp/presentation/theme/colors.dart';
+import 'package:SideBarExampleApp/presentation/theme/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

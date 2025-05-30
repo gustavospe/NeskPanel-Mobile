@@ -1,27 +1,27 @@
 // Imports das telas do aplicativo em seus respectivos diretórios.
-import 'package:SideBarExampleApp/presentation/pages/login_screen.dart';
-import 'package:SideBarExampleApp/presentation/pages/home_screen.dart';
-import 'package:SideBarExampleApp/presentation/pages/suporte_screen.dart';
-import 'package:SideBarExampleApp/presentation/pages/newsletter_screen.dart';
-import 'package:SideBarExampleApp/presentation/pages/portifolio_screen.dart';
-import 'package:SideBarExampleApp/presentation/pages/sobre_screen.dart';
+import 'package:MobilePanel/presentation/pages/login_screen.dart';
+import 'package:MobilePanel/presentation/pages/home_screen.dart';
+import 'package:MobilePanel/presentation/pages/suporte_screen.dart';
+import 'package:MobilePanel/presentation/pages/newsletter_screen.dart';
+import 'package:MobilePanel/presentation/pages/portifolio_screen.dart';
+import 'package:MobilePanel/presentation/pages/sobre_screen.dart';
 // ------------------------------------------------------------
 
 import 'package:flutter/material.dart'; // import do MaterialApp
 import 'package:provider/provider.dart'; // import do Provider
-import 'package:SideBarExampleApp/presentation/theme/theme_provider.dart'; // import do ThemeProvider
+import 'package:MobilePanel/presentation/theme/theme_provider.dart'; // import do ThemeProvider
 
 void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),
-      child: const SideBarExampleApp(),
+      child: const MobilePanel(),
     ),
   );
 }
 
-class SideBarExampleApp extends StatelessWidget {
-  const SideBarExampleApp({super.key});
+class MobilePanel extends StatelessWidget {
+  const MobilePanel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +34,13 @@ class SideBarExampleApp extends StatelessWidget {
       themeMode: themeProvider.currentTheme,
       routes: {
         "Home": (context) => const HomeScreen(),
-        "login": (context) => const LoginScreen(),
+        "Login": (context) => const LoginScreen(),
         "Suporte": (context) => const SuporteScreen(),
         "Newsletter": (context) => const NewsletterScreen(),
         "Portifolio": (context) => const PortifolioScreen(),
         "Sobre": (context) => const SobreScreen(),
       },
-      initialRoute: "Home",
+      initialRoute: "Login",
     );
   }
 }

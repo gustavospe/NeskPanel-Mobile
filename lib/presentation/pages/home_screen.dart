@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'package:SideBarExampleApp/presentation/theme/colors.dart';
-import 'package:SideBarExampleApp/presentation/theme/theme_provider.dart';
+import 'package:MobilePanel/presentation/theme/colors.dart';
+import 'package:MobilePanel/presentation/theme/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,12 +28,11 @@ class _TelaState extends State<Tela> {
 
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.85),
-          elevation: 2, // uma sombra suave para destacar
-        title: Text(
-          "SideBar",
-          style: GoogleFonts.roboto(),
-        ),
+        backgroundColor: Theme.of(
+          context,
+        ).scaffoldBackgroundColor.withOpacity(0.85),
+        elevation: 2, // uma sombra suave para destacar
+        title: Text("SideBar", style: GoogleFonts.roboto()),
         actions: [
           IconButton(
             icon: Icon(
@@ -56,9 +55,7 @@ class _TelaState extends State<Tela> {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(
-                color: AppColor.BgColorSecondary,
-              ),
+              decoration: const BoxDecoration(color: AppColor.BgColorSecondary),
               child: Text(
                 "Menu",
                 style: GoogleFonts.roboto(

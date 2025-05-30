@@ -1,5 +1,5 @@
-name: SideBarExampleApp
-description: "A new Flutter project."
+name: MobilePanel
+description: "Panel Mobile"
 publish_to: 'none' # Remova esta linha se quiser publicar o pacote, mude para 'https://pub.dev' se quiser publicar no pub.dev
 # Para mais informações sobre como publicar pacotes, visite https://dart.dev/tools/pub/cmd/pub-lish
 
@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  supabase_flutter: ^2.0.0 # Autenticacao
   cupertino_icons: ^1.0.8 # Ícones do iOS
   google_fonts: ^4.0.4 # Pacote de Fonts do goole
   provider: ^6.0.0 # Pacote de gerenciamento de estado

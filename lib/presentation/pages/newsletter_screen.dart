@@ -1,4 +1,4 @@
-//import 'package:SideBarExampleApp/ui/style/colors.dart';
+//import 'package:MobilePanel/ui/style/colors.dart';
 import 'package:flutter/material.dart';
 
 class NewsletterScreen extends StatelessWidget {

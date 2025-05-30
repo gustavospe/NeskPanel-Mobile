@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../core/secrets/keys.dart';
+import 'package:MobilePanel/core/secrets/keys.dart';
+import 'package:MobilePanel/presentation/theme/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     } catch (e) {
       setState(() {
-        _errorMessage = 'An unexpected error occurred';
+        _errorMessage = 'Um erro inesperado ocorreu!';
       });
     } finally {
       if (mounted) {
@@ -54,46 +55,54 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Future<void> _signUp() async {
-    if (!_formKey.currentState!.validate()) return;
+Future<void> _signUp() async {
+  if (!_formKey.currentState!.validate()) return;
 
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
+  setState(() {
+    _isLoading = true;
+    _errorMessage = null;
+  });
 
-    try {
-      await supabase.auth.signUp(
-        email: _emailController.text.trim(),
-        password: _passwordController.text,
+  try {
+    await supabase.auth.signUp(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+
+    // Após cadastro, faz login automático
+    await supabase.auth.signInWithPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Cadastro realizado com sucesso!'),
+          backgroundColor: Colors.green,
+        ),
       );
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Check your email for confirmation link'),
-            backgroundColor: Colors.green,
-          ),
-        );
-        setState(() {
-          _isSignUp = false;
-        });
-      }
-    } on AuthException catch (e) {
+      Navigator.pushReplacementNamed(context, "Home");
       setState(() {
-        _errorMessage = e.message;
+        _isSignUp = false;
       });
-    } catch (e) {
+    }
+  } on AuthException catch (e) {
+    setState(() {
+      _errorMessage = e.message;
+    });
+  } catch (e) {
+    setState(() {
+      _errorMessage = 'Um erro inesperado ocorreu!';
+    });
+  } finally {
+    if (mounted) {
       setState(() {
-        _errorMessage = 'An unexpected error occurred';
+        _isLoading = false;
       });
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
     }
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -112,21 +121,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   Column(
                     children: [
                       Icon(
-                        Icons.account_balance_wallet,
+                        Icons.admin_panel_settings_sharp,
                         size: 80,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: AppColor.ColorPrimary,
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'MooSeat',
-                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        'NeskPanel',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: AppColor.ColorPrimary,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Your Personal Finance Manager',
+                        'Painel de Controle',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -138,7 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   // Title
                   Text(
-                    _isSignUp ? 'Create Account' : 'Welcome Back',
+                    _isSignUp
+                        ? 'Faça seu Registo agora!'
+                        : 'Acessar conta ja existente!',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -177,10 +190,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        return 'Digite sua senha';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-                        return 'Please enter a valid email';
+                      if (!RegExp(
+                        r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                      ).hasMatch(value)) {
+                        return 'Digite sua senha';
                       }
                       return null;
                     },
@@ -192,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(
-                      labelText: 'Password',
+                      labelText: 'Senha',
                       prefixIcon: const Icon(Icons.lock_outline),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -201,10 +216,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        return 'Digite sua senha';
                       }
                       if (_isSignUp && value.length < 6) {
-                        return 'Password must be at least 6 characters';
+                        return 'Escolha uma senha Pelo menos 6 caracteres';
                       }
                       return null;
                     },
@@ -216,18 +231,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: 56,
                     child: ElevatedButton(
-                      onPressed: _isLoading ? null : (_isSignUp ? _signUp : _signIn),
+                      onPressed:
+                          _isLoading ? null : (_isSignUp ? _signUp : _signIn),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor: AppColor.GreenButtom,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        disabledBackgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        disabledBackgroundColor: Theme.of(
+                          context,
+                        ).colorScheme.primary.withOpacity(0.5),
                       ),
-                      child: _isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : Text(_isSignUp ? 'Sign Up' : 'Sign In'),
+                      child:
+                          _isLoading
+                              ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                              : Text(_isSignUp ? 'Registrar' : 'Login'),
                     ),
                   ),
 
@@ -235,19 +256,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   // Toggle sign in/up
                   TextButton(
-                    onPressed: _isLoading
-                        ? null
-                        : () {
-                            setState(() {
-                              _isSignUp = !_isSignUp;
-                              _errorMessage = null;
-                            });
-                          },
+                    onPressed:
+                        _isLoading
+                            ? null
+                            : () {
+                              setState(() {
+                                _isSignUp = !_isSignUp;
+                                _errorMessage = null;
+                              });
+                            },
                     child: Text(
                       _isSignUp
-                          ? 'Already have an account? Sign In'
-                          : 'Don\'t have an account? Sign Up',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                          ? 'Já tem uma conta? Entrar'
+                          : 'Não tem uma conta? Cadastre-se',
+                      style: TextStyle(color: AppColor.TextColor),
                     ),
                   ),
                 ],

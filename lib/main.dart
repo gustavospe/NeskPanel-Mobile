@@ -1,3 +1,6 @@
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:MobilePanel/core/secrets/keys.dart';
+
 // Imports das telas do aplicativo em seus respectivos diretórios.
 import 'package:MobilePanel/presentation/pages/login_screen.dart';
 import 'package:MobilePanel/presentation/pages/home_screen.dart';
@@ -11,7 +14,14 @@ import 'package:flutter/material.dart'; // import do MaterialApp
 import 'package:provider/provider.dart'; // import do Provider
 import 'package:MobilePanel/presentation/theme/theme_provider.dart'; // import do ThemeProvider
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: Constants.supabaseUrl,
+    anonKey: Constants.supabaseAnonKey,
+  );
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),

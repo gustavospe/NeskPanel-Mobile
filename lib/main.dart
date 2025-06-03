@@ -50,7 +50,7 @@ class neskpanel_mobile extends StatelessWidget {
         "Portifolio": (context) => const PortifolioScreen(),
         "Sobre": (context) => const SobreScreen(),
       },
-      initialRoute: "Login",
+      initialRoute: "Home",
     );
   }
 }

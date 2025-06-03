@@ -59,7 +59,7 @@ class _TelaState extends State<Tela> {
               child: Text(
                 "Menu",
                 style: GoogleFonts.roboto(
-                  color: AppColor.TextTitule,
+                  color: AppColor.TextTitle,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),

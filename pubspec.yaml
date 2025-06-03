@@ -20,9 +20,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
 
   flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
 
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/logo.png"
+  background_color: "#1a1a1a" 
+  remove_alpha_ios: true      # evita transparência no iOS

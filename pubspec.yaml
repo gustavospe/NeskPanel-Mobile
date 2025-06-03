@@ -1,4 +1,4 @@
-name: MobilePanel
+name: neskpanel_mobile
 description: "Panel Mobile"
 publish_to: 'none' # Remova esta linha se quiser publicar o pacote, mude para 'https://pub.dev' se quiser publicar no pub.dev
 # Para mais informações sobre como publicar pacotes, visite https://dart.dev/tools/pub/cmd/pub-lish

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:MobilePanel/core/secrets/keys.dart';
-import 'package:MobilePanel/presentation/theme/colors.dart';
+import 'package:neskpanel_mobile/core/secrets/keys.dart';
+import 'package:neskpanel_mobile/presentation/theme/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

@@ -1,4 +1,4 @@
-//import 'package:MobilePanel/ui/style/colors.dart';
+//import 'package:neskpanel_mobile/ui/style/colors.dart';
 import 'package:flutter/material.dart';
 
 class SobreScreen extends StatelessWidget {

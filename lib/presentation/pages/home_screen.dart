@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'package:MobilePanel/presentation/theme/colors.dart';
-import 'package:MobilePanel/presentation/theme/theme_provider.dart';
+import 'package:neskpanel_mobile/presentation/theme/colors.dart';
+import 'package:neskpanel_mobile/presentation/theme/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -1,18 +1,18 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:MobilePanel/core/secrets/keys.dart';
+import 'package:neskpanel_mobile/core/secrets/keys.dart';
 
 // Imports das telas do aplicativo em seus respectivos diretórios.
-import 'package:MobilePanel/presentation/pages/login_screen.dart';
-import 'package:MobilePanel/presentation/pages/home_screen.dart';
-import 'package:MobilePanel/presentation/pages/suporte_screen.dart';
-import 'package:MobilePanel/presentation/pages/newsletter_screen.dart';
-import 'package:MobilePanel/presentation/pages/portifolio_screen.dart';
-import 'package:MobilePanel/presentation/pages/sobre_screen.dart';
+import 'package:neskpanel_mobile/presentation/pages/login_screen.dart';
+import 'package:neskpanel_mobile/presentation/pages/home_screen.dart';
+import 'package:neskpanel_mobile/presentation/pages/suporte_screen.dart';
+import 'package:neskpanel_mobile/presentation/pages/newsletter_screen.dart';
+import 'package:neskpanel_mobile/presentation/pages/portifolio_screen.dart';
+import 'package:neskpanel_mobile/presentation/pages/sobre_screen.dart';
 // ------------------------------------------------------------
 
 import 'package:flutter/material.dart'; // import do MaterialApp
 import 'package:provider/provider.dart'; // import do Provider
-import 'package:MobilePanel/presentation/theme/theme_provider.dart'; // import do ThemeProvider
+import 'package:neskpanel_mobile/presentation/theme/theme_provider.dart'; // import do ThemeProvider
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,13 +25,13 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(),
-      child: const MobilePanel(),
+      child: const neskpanel_mobile(),
     ),
   );
 }
 
-class MobilePanel extends StatelessWidget {
-  const MobilePanel({super.key});
+class neskpanel_mobile extends StatelessWidget {
+  const neskpanel_mobile({super.key});
 
   @override
   Widget build(BuildContext context) {
